@@ -1,3 +1,5 @@
+'use server';
+
 import { scrollToId } from './utils';
 
 export default function Menu({ menuItems, activeMenuItem }) {

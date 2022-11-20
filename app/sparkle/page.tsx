@@ -1,7 +1,7 @@
 'use server';
 
 import HeadlessPage from '#/components/HeadlessPage';
-//import "../../styles/globals.scss";
+import '#/style2/globals.scss';
 import { TimelineAnimationWrapper } from '#/components/TimelineWrapper';
 import ResizeProvider from '#/components/ResizeProvider';
 import { downloadData } from '#/components/utils';
@@ -14,7 +14,6 @@ export default async function Page() {
   return (
     <ResizeProvider>
       <TimelineAnimationWrapper>
-        <div>{props.desktopData ? 'data not null' : 'data is null'}</div>
         <HeadlessPage
           desktopData={props.desktopData}
           mobileData={props.mobileData}

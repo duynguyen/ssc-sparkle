@@ -1,3 +1,5 @@
+'use server';
+
 import Menu from './Menu';
 
 const textItemLookup = {
