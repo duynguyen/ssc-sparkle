@@ -6,6 +6,17 @@ const nextConfig = {
     // Required:
     appDir: true,
   },
+  images: {
+    minimumCacheTTL: 12000,
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'publish-p81252-e700817.adobeaemcloud.com',
+        // port: '',
+        pathname: '/**',
+      },
+    ],
+  },
 };
 
 module.exports = nextConfig;
