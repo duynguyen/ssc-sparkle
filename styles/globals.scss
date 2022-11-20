@@ -158,6 +158,20 @@ button {
   }
 }
 
+div.page.mobile {
+  .mobileHeaderWrapper {
+    transition: opacity 2s linear;
+    opacity: 1;
+  }
+}
+
+div.page.desktop {
+  .mobileHeaderWrapper {
+    transition: opacity 2s linear;
+    opacity: 0;
+  }
+}
+
 /* @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;

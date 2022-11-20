@@ -18,7 +18,7 @@ export default function HeadlessPage({
     viewType === 'mobile' ? mobileData : desktopData,
   );
   const [hash, setHash] = useState(null);
-  const [loadRest, setLoadRest] = useState(false);
+  const [loadRest, setLoadRest] = useState(true);
   const [ignoreHash, setIgnoreHash] = useState(false);
   const [debugAnim, setDebugAnim] = useState(null);
   const [forceView, setForceView] = useState(null);
@@ -116,30 +116,28 @@ export default function HeadlessPage({
   return (
     data && (
       <div
-        className={'page'}
-        style={
-          viewType === 'mobile' ? { maxWidth: 840, margin: '0 auto' } : null
-        }
+        className={'page' + (viewType === 'mobile' ? ' mobile' : ' desktop')}
+        // style={
+        //   viewType === 'mobile' ? { maxWidth: 840, margin: '0 auto' } : null
+        // }
       >
         {/* <Head>
           <title>{data?.title || "Sparkle SSR Demo"}</title>
           <meta name="description" content={data?.description?.plaintext} />
         </Head> */}
-        {viewType === 'mobile' && (
-          <MobileHeader
-            isAuthorVersion={isAuthorVersion}
-            host={host}
-            mobileNavObj={data?.mobileNavMenu}
-            debugAnim={debugAnim}
-            maxWidth={840}
-          />
-        )}
+        <MobileHeader
+          isAuthorVersion={isAuthorVersion}
+          host={host}
+          mobileNavObj={data?.mobileNavMenu}
+          debugAnim={debugAnim}
+          maxWidth={840}
+        />
         {data?.panels?.map &&
           data.panels.map((panel, index) => {
-            if (viewType === 'desktop' && index > 0 && !loadRest) {
-              document.body.style.overflowY = 'scroll';
-              return null;
-            }
+            // if (viewType === 'desktop' && index > 0 && !loadRest) {
+            //   document.body.style.overflowY = 'scroll';
+            //   return null;
+            // }
             return (
               <Panel
                 panel={panel}

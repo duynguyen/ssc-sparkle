@@ -39,7 +39,7 @@ export default function Background(props) {
       {backgroundContent?.type === 'image' && (
         <Image
           src={source}
-          alt={altText}
+          alt={altText ? altText : 'background image'}
           width={backgroundContent.width}
           height={backgroundContent.height}
           className="backgroundImage"

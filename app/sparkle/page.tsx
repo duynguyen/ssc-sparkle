@@ -6,10 +6,10 @@ import { TimelineAnimationWrapper } from '#/components/TimelineWrapper';
 import ResizeProvider from '#/components/ResizeProvider';
 import { downloadData } from '#/components/utils';
 
-export const revalidate = 1; // revalidate every hour
+//export const revalidate = 1; // revalidate every minute? sec?
 
 export default async function Page() {
-  const props = await fetchData2();
+  const props = await fetchData();
 
   console.log('Sparkle root page rendered at ', new Date());
 
@@ -28,14 +28,6 @@ export default async function Page() {
 }
 
 async function fetchData() {
-  const res = await fetch(`https://jsonplaceholder.typicode.com/posts/7`, {
-    next: { revalidate: 15 },
-  });
-  const data = await res.json();
-  return data;
-}
-
-async function fetchData2() {
   console.log('getServerSideProps');
 
   const hostConfig = {

@@ -73,7 +73,7 @@ export default function LayerImage(props) {
           id={id}
           src={source}
           className="image"
-          alt={altText?.plaintext}
+          alt={altText?.plaintext ? altText.plaintext : 'missingAltText'}
           width={image.width}
           height={image.height}
           priority={aboveFold(props) && mobileMode === isMobileData(props)}

@@ -1,20 +1,20 @@
 'use client';
 
-import dynamic from 'next/dynamic';
+//import dynamic from 'next/dynamic';
 import { useContext, useEffect } from 'react';
-// import LayerImage from "../components/LayerImage";
-// import TextLayer from "../components/TextLayer";
-// import PointTextMap from "./PointTextMap";
+import LayerImage from '../components/LayerImage';
+import TextLayer from '../components/TextLayer';
+import PointTextMap from './PointTextMap';
 import { TimelineProvider } from './TimelineWrapper';
 import { scrollToId } from '../components/utils';
-//import Header from "./Header";
-//import Background from "./Background";
+import Header from './Header';
+import Background from './Background';
 
-const Background = dynamic(() => import('../components/Background'));
-const Header = dynamic(() => import('../components/Header'));
-const LayerImage = dynamic(() => import('./LayerImage'));
-const TextLayer = dynamic(() => import('./TextLayer'));
-const PointTextMap = dynamic(() => import('./PointTextMap'));
+// const Background = dynamic(() => import('../components/Background'));
+// const Header = dynamic(() => import('../components/Header'));
+// const LayerImage = dynamic(() => import('./LayerImage'));
+// const TextLayer = dynamic(() => import('./TextLayer'));
+// const PointTextMap = dynamic(() => import('./PointTextMap'));
 
 export default function Panel({
   panel,

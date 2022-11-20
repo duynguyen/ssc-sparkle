@@ -105,7 +105,10 @@ export default function MobileHeader({
   };
 
   return (
-    <header className="mobileHeaderWrapper" style={{ maxWidth }}>
+    <header
+      className="mobileHeaderWrapper"
+      // style={{ maxWidth }}
+    >
       <div className="mainHeader">
         <button
           className={`menuButton ${openMenu ? 'menuOpen' : 'menuClosed'}`}
