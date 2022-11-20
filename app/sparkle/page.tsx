@@ -1,13 +1,15 @@
 'use server';
 
 import HeadlessPage from '#/components/HeadlessPage';
-import '#/style2/globals.scss';
+import '#/styles/globals.scss';
 import { TimelineAnimationWrapper } from '#/components/TimelineWrapper';
 import ResizeProvider from '#/components/ResizeProvider';
 import { downloadData } from '#/components/utils';
 
+export const revalidate = 1; // revalidate every hour
+
 export default async function Page() {
-  const props = await getData();
+  const props = await fetchData2();
 
   console.log('props', props);
 
@@ -25,7 +27,17 @@ export default async function Page() {
   );
 }
 
-export async function getData() {
+async function fetchData() {
+  const res = await fetch(`https://jsonplaceholder.typicode.com/posts/7`, {
+    next: { revalidate: 15 },
+  });
+  const data = await res.json();
+  return data;
+}
+
+async function fetchData2() {
+  console.log('getServerSideProps');
+
   const hostConfig = {
     authorHost: 'https://author-p81252-e700817.adobeaemcloud.com',
     publishHost: 'https://publish-p81252-e700817.adobeaemcloud.com/',

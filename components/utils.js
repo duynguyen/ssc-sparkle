@@ -161,10 +161,14 @@ export async function downloadData(hostConfig, variation) {
     endpoint = endpoint.substring(1);
   }
 
+  const fetchWithReload = async (url, init) => {
+    return fetch(url, { next: { revalidate: 15 } });
+  };
+
   const aemHeadlessClient = new AEMHeadless({
     endpoint: publishHost,
     serviceURL: publishHost,
-    fetch: fetch,
+    fetch: fetchWithReload,
   });
 
   // get data from AEM graphql call at endpoint, causes error if fetch fails

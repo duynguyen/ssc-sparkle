@@ -1,9 +1,9 @@
 'use client';
 
+// import Head from "next/head";
 import { useState, useEffect, useContext } from 'react';
 import { WindowSizeProvider } from './ResizeProvider';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
-
 import MobileHeader from './MobileHeader';
 import Panel from './Panel';
 
@@ -22,6 +22,17 @@ export default function HeadlessPage({
   const [ignoreHash, setIgnoreHash] = useState(false);
   const [debugAnim, setDebugAnim] = useState(null);
   const [forceView, setForceView] = useState(null);
+
+  console.log(
+    'HeadlessPage',
+    viewType,
+    data,
+    hash,
+    loadRest,
+    ignoreHash,
+    debugAnim,
+    forceView,
+  );
 
   const handleHashUpdateEvent = (e) => {
     if (e.origin !== window.location.host && e.data.type !== 'hashUpdate') {
