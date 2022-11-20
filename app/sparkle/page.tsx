@@ -11,7 +11,7 @@ export const revalidate = 1; // revalidate every hour
 export default async function Page() {
   const props = await fetchData2();
 
-  console.log('props', props);
+  console.log('Sparkle root page rendered at ', new Date());
 
   return (
     <ResizeProvider>

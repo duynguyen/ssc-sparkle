@@ -23,17 +23,6 @@ export default function HeadlessPage({
   const [debugAnim, setDebugAnim] = useState(null);
   const [forceView, setForceView] = useState(null);
 
-  console.log(
-    'HeadlessPage',
-    viewType,
-    data,
-    hash,
-    loadRest,
-    ignoreHash,
-    debugAnim,
-    forceView,
-  );
-
   const handleHashUpdateEvent = (e) => {
     if (e.origin !== window.location.host && e.data.type !== 'hashUpdate') {
       return;
@@ -121,6 +110,8 @@ export default function HeadlessPage({
       setHash(window.location.hash);
     }
   }, [viewType]);
+
+  console.log('HeadlessPage for ' + viewType + ' rendered at ', new Date());
 
   return (
     data && (
