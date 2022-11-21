@@ -33,6 +33,7 @@
     "encoding": "0.1.13",
     "next": "13.0.5-canary.3",
     "react": "18.2.0",
+    "react-device-detect": "2.2.2",
     "react-dom": "18.2.0",
     "sass": "1.56.1",
     "sharp": "0.31.2",
