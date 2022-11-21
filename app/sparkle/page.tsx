@@ -2,28 +2,29 @@
 
 import HeadlessPage from '#/components/HeadlessPage';
 import '#/styles/globals.scss';
-import { TimelineAnimationWrapper } from '#/components/TimelineWrapper';
-import ResizeProvider from '#/components/ResizeProvider';
 import { downloadData } from '#/components/utils';
+
+import { isMobile } from 'react-device-detect';
 
 //export const revalidate = 1; // revalidate every minute? sec?
 
 export default async function Page() {
   const props = await fetchData();
 
-  console.log('Sparkle root page rendered at ', new Date());
+  const data = isMobile ? props.mobileData : props.desktopData;
+
+  console.log(
+    'Sparkle root page rendered in model mobile=' + isMobile + 'at ',
+    new Date(),
+  );
 
   return (
-    <ResizeProvider>
-      <TimelineAnimationWrapper>
-        <HeadlessPage
-          desktopData={props.desktopData}
-          mobileData={props.mobileData}
-          isAuthorVersion={props.isAuthorVersion}
-          host={props.customHost}
-        />
-      </TimelineAnimationWrapper>
-    </ResizeProvider>
+    <HeadlessPage
+      viewType={isMobile ? 'mobile' : 'desktop'}
+      data={data}
+      isAuthorVersion={props.isAuthorVersion}
+      host={props.customHost}
+    />
   );
 }
 

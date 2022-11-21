@@ -7,8 +7,6 @@ import Panel from './Panel';
 export default function HeadlessPage({
   viewType, // 'mobile' or 'desktop'
   data,
-  desktopData,
-  mobileData,
   isAuthorVersion,
   host,
 }) {
@@ -26,13 +24,15 @@ export default function HeadlessPage({
           <title>{data?.title || "Sparkle SSR Demo"}</title>
           <meta name="description" content={data?.description?.plaintext} />
         </Head> */}
-        <MobileHeader
-          isAuthorVersion={isAuthorVersion}
-          host={host}
-          mobileNavObj={data?.mobileNavMenu}
-          debugAnim={debugAnim}
-          maxWidth={840}
-        />
+        {viewType === 'mobile' && (
+          <MobileHeader
+            isAuthorVersion={isAuthorVersion}
+            host={host}
+            mobileNavObj={data?.mobileNavMenu}
+            debugAnim={debugAnim}
+            maxWidth={840}
+          />
+        )}
         {data?.panels?.map &&
           data.panels.map((panel, index) => {
             // if (viewType === 'desktop' && index > 0 && !loadRest) {
@@ -48,8 +48,8 @@ export default function HeadlessPage({
                 runOnEnd={null}
                 isAuthorVersion={isAuthorVersion}
                 host={host}
-                hash={hash}
-                ignoreHash={ignoreHash}
+                hash={null}
+                ignoreHash={true}
               />
             );
           })}
