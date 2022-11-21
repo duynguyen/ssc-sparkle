@@ -20,6 +20,7 @@ const isMenu = (obj) => {
 };
 
 export default function TextLayer({ data, activeMenuItem }) {
+  //console.log('TextLayer with id=' + data?.id + ' rendered at ', new Date());
   return (
     <div className={'textLayer'} id={data?.id}>
       {data?.column?.length ? (

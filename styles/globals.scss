@@ -158,19 +158,31 @@ button {
   }
 }
 
-div.page.mobile {
+// div.page.mobile {
+//   .mobileHeaderWrapper {
+//     transition: opacity 2s linear;
+//     opacity: 1;
+//   }
+// }
+
+@media (max-width: 840px) {
   .mobileHeaderWrapper {
-    transition: opacity 2s linear;
-    opacity: 1;
+    display: block;
   }
 }
 
-div.page.desktop {
+@media (min-width: 841px) {
   .mobileHeaderWrapper {
-    transition: opacity 2s linear;
-    opacity: 0;
+    display: none;
   }
 }
+
+// div.page.desktop {
+//   .mobileHeaderWrapper {
+//     transition: opacity 2s linear;
+//     opacity: 0;
+//   }
+// }
 
 /* @media (prefers-color-scheme: dark) {
   html {

@@ -1,5 +1,5 @@
 {
-  "name": "app-playground",
+  "name": "ssc-sparkle",
   "private": true,
   "scripts": {
     "build": "next build",

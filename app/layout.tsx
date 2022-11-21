@@ -6,9 +6,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" style={{ scrollBehavior: 'auto' }}>
       <head />
-      <body>
+      <body style={{ scrollBehavior: 'auto' }}>
         <div>{children}</div>
       </body>
     </html>

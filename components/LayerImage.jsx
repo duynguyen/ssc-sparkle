@@ -1,3 +1,5 @@
+'use server';
+
 import Image from 'next/image';
 import { useContext } from 'react';
 import { WindowSizeProvider } from './ResizeProvider';
@@ -53,7 +55,7 @@ export default function LayerImage(props) {
   const source = host + image?._path;
 
   const windowSize = useContext(WindowSizeProvider);
-  const mobileMode = windowSize.width <= 840;
+  // const mobileMode = windowSize.width <= 840;
 
   return (
     <div
@@ -76,12 +78,8 @@ export default function LayerImage(props) {
           alt={altText?.plaintext ? altText.plaintext : 'missingAltText'}
           width={image.width}
           height={image.height}
-          priority={aboveFold(props) && mobileMode === isMobileData(props)}
-          loading={
-            aboveFold(props) && mobileMode === isMobileData(props)
-              ? 'eager'
-              : 'lazy'
-          }
+          priority={aboveFold(props) && isMobileData(props)}
+          loading={aboveFold(props) && isMobileData(props) ? 'eager' : 'lazy'}
           sizes="50vw"
           //fetchpriority={layerId === 'biker-layer' ? 'high' : ''}
           //priority={false}
