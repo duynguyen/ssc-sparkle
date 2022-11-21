@@ -1,6 +1,6 @@
+'use server';
+
 import Image from 'next/image';
-import { useContext } from 'react';
-import { WindowSizeProvider } from './ResizeProvider';
 
 function aboveFold({ backgroundProps, panelNr, host }) {
   const { backgroundContent, isVideo, altText, color, zIndex, type } =
@@ -28,9 +28,6 @@ export default function Background(props) {
 
   const source = host + backgroundContent?._path;
 
-  const windowSize = useContext(WindowSizeProvider);
-  const mobileMode = windowSize.width <= 840;
-
   return (
     <div
       className={`backgroundWrapper ${isVideo ? 'isVideo' : ''}`}
@@ -43,12 +40,8 @@ export default function Background(props) {
           width={backgroundContent.width}
           height={backgroundContent.height}
           className="backgroundImage"
-          priority={aboveFold(props) && mobileMode === isMobileData(props)}
-          loading={
-            aboveFold(props) && mobileMode === isMobileData(props)
-              ? 'eager'
-              : 'lazy'
-          }
+          priority={aboveFold(props)}
+          loading={aboveFold(props) ? 'eager' : 'lazy'}
           sizes="70vw"
           quality="90"
         />
