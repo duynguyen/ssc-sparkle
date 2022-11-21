@@ -78,8 +78,8 @@ export default function LayerImage(props) {
           alt={altText?.plaintext ? altText.plaintext : 'missingAltText'}
           width={image.width}
           height={image.height}
-          priority={aboveFold(props) && isMobileData(props)}
-          loading={aboveFold(props) && isMobileData(props) ? 'eager' : 'lazy'}
+          priority={aboveFold(props)}
+          loading={aboveFold(props) ? 'eager' : 'lazy'}
           sizes="50vw"
           //fetchpriority={layerId === 'biker-layer' ? 'high' : ''}
           //priority={false}

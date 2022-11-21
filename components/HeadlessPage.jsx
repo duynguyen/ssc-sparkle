@@ -29,7 +29,7 @@ export default function HeadlessPage({
             isAuthorVersion={isAuthorVersion}
             host={host}
             mobileNavObj={data?.mobileNavMenu}
-            debugAnim={debugAnim}
+            debugAnim={false}
             maxWidth={840}
           />
         )}
