@@ -3,18 +3,31 @@
 import HeadlessPage from '#/components/HeadlessPage';
 import '#/styles/globals.scss';
 import { downloadData } from '#/components/utils';
+import { headers } from 'next/headers';
 
-import { isMobile } from 'react-device-detect';
+import { deviceDetect } from 'react-device-detect';
 
 //export const revalidate = 1; // revalidate every minute? sec?
 
 export default async function Page() {
+  const headersList = headers();
+  const referer = headersList.get('referer');
+  const userAgent = headersList.get('user-agent');
+  const device = deviceDetect(userAgent as undefined | string);
+  const isMobile = device.isMobile;
+
+  console.log('device', device);
+
   const props = await fetchData();
 
   const data = isMobile ? props.mobileData : props.desktopData;
 
   console.log(
-    'Sparkle root page rendered in model mobile=' + isMobile + 'at ',
+    'Sparkle root page rendered in model mobile=' +
+      isMobile +
+      ' for browser=' +
+      device.ua +
+      ' at ',
     new Date(),
   );
 
