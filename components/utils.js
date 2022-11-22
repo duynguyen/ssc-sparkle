@@ -162,7 +162,7 @@ export async function downloadData(hostConfig, variation) {
   }
 
   const fetchWithReload = async (url, init) => {
-    return fetch(url, { next: { revalidate: 15 } });
+    return fetch(url, { next: { revalidate: 36000 } });
   };
 
   const aemHeadlessClient = new AEMHeadless({
