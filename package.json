@@ -11,9 +11,6 @@
     "start": "next start",
     "test": "yarn prettier:check && yarn lint"
   },
-  "git": {
-    "pre-commit": "lint-staged"
-  },
   "lint-staged": {
     "*": "prettier --write --ignore-unknown"
   },
