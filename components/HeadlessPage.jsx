@@ -3,6 +3,7 @@
 // import Head from "next/head";
 import MobileHeader from './MobileHeader';
 import Panel from './Panel';
+import Head from 'next/head';
 
 export default function HeadlessPage({
   viewType, // 'mobile' or 'desktop'
@@ -20,10 +21,11 @@ export default function HeadlessPage({
         //   viewType === 'mobile' ? { maxWidth: 840, margin: '0 auto' } : null
         // }
       >
-        {/* <Head>
-          <title>{data?.title || "Sparkle SSR Demo"}</title>
-          <meta name="description" content={data?.description?.plaintext} />
-        </Head> */}
+        {/*<Head>*/}
+        {/*  <title>{data?.title || "Sparkle SSR Demo"}</title>*/}
+        {/*  <meta name="description" content={data?.description?.plaintext} />*/}
+        {/*  <meta name="renderedAt" content={new Date().toLocaleString()} />*/}
+        {/*</Head>*/}
         {viewType === 'mobile' && (
           <MobileHeader
             isAuthorVersion={isAuthorVersion}

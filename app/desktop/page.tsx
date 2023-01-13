@@ -6,30 +6,37 @@ import { downloadData } from '#/components/utils';
 import { headers } from 'next/headers';
 
 import { deviceDetect } from 'react-device-detect';
+import React from 'react';
+import { cache } from 'react';
 
-//export const revalidate = 1; // revalidate every minute? sec?
+export const revalidate = 3600; // revalidate every minute? sec?
 
 export default async function Page() {
-  const headersList = headers();
-  const referer = headersList.get('referer');
-  const userAgent = headersList.get('user-agent');
-  const device = deviceDetect(userAgent as undefined | string);
-  const isMobile = device.isMobile;
+  // const headersList = headers();
+  // const referer = headersList.get('referer');
+  // const userAgent = headersList.get('user-agent');
+  // const device = deviceDetect(userAgent as undefined | string);
+  // const isMobile = device.isMobile;
+  const isMobile = false;
 
-  console.log('device', device);
+  console.log('isMobile', isMobile);
 
-  const props = await fetchData();
+  const props = await fetchDataCached();
 
   const data = isMobile ? props.mobileData : props.desktopData;
 
-  console.log(
-    'Sparkle root page rendered in model mobile=' +
-      isMobile +
-      ' for browser=' +
-      device.ua +
-      ' at ',
+  console.log("Rendering",
     new Date(),
   );
+
+  // console.log(
+  //   'Sparkle root page rendered in mode mobile=' +
+  //     isMobile +
+  //     ' for browser=' +
+  //     device.ua +
+  //     ' at ',
+  //   new Date(),
+  // );
 
   return (
     <HeadlessPage
@@ -40,6 +47,11 @@ export default async function Page() {
     />
   );
 }
+
+const fetchDataCached = cache(async () => {
+  const data = await fetchData();
+  return data;
+});
 
 async function fetchData() {
   console.log('getServerSideProps');

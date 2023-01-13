@@ -1,44 +1,74 @@
-import { demos } from '#/lib/demos';
-import Link from 'next/link';
+'use server';
 
-export default function Page() {
-  return (
-    <div className="space-y-8">
-      <h1 className="text-xl font-medium text-gray-300">Examples</h1>
+import HeadlessPage from '#/components/HeadlessPage';
+import '#/styles/globals.scss';
+import { downloadData } from '#/components/utils';
+import { headers } from 'next/headers';
 
-      <div className="space-y-10 text-white">
-        {demos.map((section) => {
-          return (
-            <div key={section.name} className="space-y-5">
-              <div className="text-xs font-semibold uppercase tracking-wider text-gray-500">
-                {section.name}
-              </div>
+import { deviceDetect } from 'react-device-detect';
+import React from 'react';
+import { cache } from 'react';
 
-              <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
-                {section.items.map((item) => {
-                  return (
-                    <Link
-                      href={`/${item.slug}`}
-                      key={item.name}
-                      className="group block space-y-1.5 rounded-lg bg-gray-900 px-5 py-3 hover:bg-gray-800"
-                    >
-                      <div className="font-medium text-gray-200 group-hover:text-gray-50">
-                        {item.name}
-                      </div>
+export const revalidate = 3600; // revalidate every minute? sec?
 
-                      {item.description ? (
-                        <div className="line-clamp-3 text-sm text-gray-400 group-hover:text-gray-300">
-                          {item.description}
-                        </div>
-                      ) : null}
-                    </Link>
-                  );
-                })}
-              </div>
-            </div>
-          );
-        })}
-      </div>
-    </div>
+export default async function Page() {
+  // const headersList = headers();
+  // const referer = headersList.get('referer');
+  // const userAgent = headersList.get('user-agent');
+  // const device = deviceDetect(userAgent as undefined | string);
+  // const isMobile = device.isMobile;
+  const isMobile = true;
+
+  console.log('isMobile', isMobile);
+
+  const props = await fetchDataCached();
+
+  const data = isMobile ? props.mobileData : props.desktopData;
+
+  console.log("Rendering",
+    new Date(),
   );
+
+  // console.log(
+  //   'Sparkle root page rendered in mode mobile=' +
+  //     isMobile +
+  //     ' for browser=' +
+  //     device.ua +
+  //     ' at ',
+  //   new Date(),
+  // );
+
+  return (
+    <HeadlessPage
+      viewType={isMobile ? 'mobile' : 'desktop'}
+      data={data}
+      isAuthorVersion={props.isAuthorVersion}
+      host={props.customHost}
+    />
+  );
+}
+
+const fetchDataCached = cache(async () => {
+  const data = await fetchData();
+  return data;
+});
+
+async function fetchData() {
+  console.log('getServerSideProps');
+
+  const hostConfig = {
+    authorHost: 'https://author-p81252-e700817.adobeaemcloud.com',
+    publishHost: 'https://publish-p81252-e700817.adobeaemcloud.com/',
+    endpoint: 'sample-wknd-app/homepage',
+  };
+
+  let props = {
+    desktopData: await downloadData(hostConfig, 'desktop'),
+    mobileData: await downloadData(hostConfig, 'mobile'),
+    isAuthorVersion: false,
+    customHost: 'https://publish-p81252-e700817.adobeaemcloud.com/',
+    fetchError: null,
+  };
+
+  return props;
 }
