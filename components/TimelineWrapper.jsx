@@ -11,12 +11,19 @@ gsap.registerPlugin(ScrollTrigger);
 export const TimelineProvider = createContext(null);
 
 export const TimelineAnimationWrapper = ({ children }) => {
-  const [debugAnim, setDebugAnim] = useState(null);
+
+  let debugAnim = null;
+  if(typeof window !== 'undefined') {
+    const urlParams = new URLSearchParams(window?.location?.search);
+    const debugAnimQuery = urlParams?.get('debugAnim');
+    debugAnim = debugAnimQuery === 'instant';
+  }
+
   const ref = useRef();
   const q = gsap.utils.selector(ref);
 
   const createTimeline = (timelineArray, timelineSettings, runOnEnd) => {
-    console.log('createTimeline', timelineArray);
+    // console.log('createTimeline', timelineArray);
 
     createAnimationTimeline(
       gsap,
@@ -29,9 +36,6 @@ export const TimelineAnimationWrapper = ({ children }) => {
   };
 
   useEffect(() => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const debugAnimQuery = urlParams.get('debugAnim');
-    if (debugAnimQuery === 'instant') setDebugAnim('instant');
     // Refresh ScrollTrigger when page switches, fixes snap positions staying through pages
     window.onload = () => ScrollTrigger.refresh();
   }, []);
