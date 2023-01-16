@@ -13,14 +13,12 @@ export default function Head() {
 
       <link rel="icon" href="/favicon.ico" />
 
-
-
-      {/*<link rel="preload"*/}
-      {/*      fetchpriority="high"*/}
-      {/*      media="(max-width: 840px)"*/}
-      {/*      as="image"*/}
-      {/*      imageSrcSet="http://localhost:3000/_next/image?url=https%3A%2F%2Fpublish-p81252-e700817.adobeaemcloud.com%2F%2Fcontent%2Fdam%2Fsample-wknd-app%2Fen%2Fimage-files%2Fbiker.png&w=640&q=90"*/}
-      {/*      imageSizes="50vw"/>*/}
+      <link rel="preload"
+            fetchpriority="high"
+            // media="(max-width: 840px)"
+            as="image"
+            imageSrcSet="/_next/image?url=https%3A%2F%2Fpublish-p81252-e700817.adobeaemcloud.com%2F%2Fcontent%2Fdam%2Fsample-wknd-app%2Fen%2Fimage-files%2Frocks2.png&w=384&q=90 384w, /_next/image?url=https%3A%2F%2Fpublish-p81252-e700817.adobeaemcloud.com%2F%2Fcontent%2Fdam%2Fsample-wknd-app%2Fen%2Fimage-files%2Frocks2.png&w=640&q=90 640w, /_next/image?url=https%3A%2F%2Fpublish-p81252-e700817.adobeaemcloud.com%2F%2Fcontent%2Fdam%2Fsample-wknd-app%2Fen%2Fimage-files%2Frocks2.png&w=750&q=90 750w, /_next/image?url=https%3A%2F%2Fpublish-p81252-e700817.adobeaemcloud.com%2F%2Fcontent%2Fdam%2Fsample-wknd-app%2Fen%2Fimage-files%2Frocks2.png&w=828&q=90 828w, /_next/image?url=https%3A%2F%2Fpublish-p81252-e700817.adobeaemcloud.com%2F%2Fcontent%2Fdam%2Fsample-wknd-app%2Fen%2Fimage-files%2Frocks2.png&w=1080&q=90 1080w, /_next/image?url=https%3A%2F%2Fpublish-p81252-e700817.adobeaemcloud.com%2F%2Fcontent%2Fdam%2Fsample-wknd-app%2Fen%2Fimage-files%2Frocks2.png&w=1200&q=90 1200w, /_next/image?url=https%3A%2F%2Fpublish-p81252-e700817.adobeaemcloud.com%2F%2Fcontent%2Fdam%2Fsample-wknd-app%2Fen%2Fimage-files%2Frocks2.png&w=1920&q=90 1920w, /_next/image?url=https%3A%2F%2Fpublish-p81252-e700817.adobeaemcloud.com%2F%2Fcontent%2Fdam%2Fsample-wknd-app%2Fen%2Fimage-files%2Frocks2.png&w=2048&q=90 2048w, /_next/image?url=https%3A%2F%2Fpublish-p81252-e700817.adobeaemcloud.com%2F%2Fcontent%2Fdam%2Fsample-wknd-app%2Fen%2Fimage-files%2Frocks2.png&w=3840&q=90 3840w"
+            imageSizes="50vw"/>
 
 
       {/*<link*/}
