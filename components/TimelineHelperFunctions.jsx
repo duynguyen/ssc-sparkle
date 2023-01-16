@@ -47,7 +47,7 @@ const createAnimationTimeline = (
   }
   // value to control duration overrides
   try {
-    const instant = debugAnim === 'instant';
+    const instant = debugAnim;
     // initialize timeline
     const tl = gsap.timeline({ onComplete: runOnEnd });
     if (timelineSettings?.startDelay && !instant) {
@@ -87,10 +87,8 @@ const createAnimationTimeline = (
       }
 
       //stop the initial flicker
-      if(animation.selector !== "#rocks8") {
-        animation.from.autoAlpha = 0;
-        animation.to.autoAlpha = 1;
-      }
+      animation.from.autoAlpha = 0;
+      animation.to.autoAlpha = 1;
 
       // apply animation based on what is present
       if (animation.from && animation.to) {

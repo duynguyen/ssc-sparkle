@@ -173,7 +173,7 @@ button {
   }
 
 
-  div#intro header.header {
+  div.panel header.header {
     display: none;
   }
 }
@@ -181,6 +181,10 @@ button {
 @media (min-width: 841px) {
   .mobileHeaderWrapper {
     display: none;
+  }
+
+  div.panel header.header {
+  display: block;
   }
 }
 
