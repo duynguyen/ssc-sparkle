@@ -16,6 +16,8 @@ export const TimelineAnimationWrapper = ({ children }) => {
   const q = gsap.utils.selector(ref);
 
   const createTimeline = (timelineArray, timelineSettings, runOnEnd) => {
+    console.log('createTimeline', timelineArray);
+
     createAnimationTimeline(
       gsap,
       q,
