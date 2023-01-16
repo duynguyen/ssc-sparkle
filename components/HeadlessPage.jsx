@@ -5,22 +5,23 @@ import Panel from './Panel';
 import PanelAnimationWrapper from '#/components/PanelAnimationWrapper';
 
 export default function HeadlessPage({
-  data,
-  isAuthorVersion,
-  host,
-}) {
+                                       data,
+                                       isAuthorVersion,
+                                       host,
+                                       animation = true,
+                                     }) {
 
   return (
     data && (
       <div
-        className="page desktop">
-          <MobileHeader
-            isAuthorVersion={isAuthorVersion}
-            host={host}
-            mobileNavObj={data?.mobileNavMenu}
-            debugAnim={false}
-            maxWidth={840}
-          />
+        className='page desktop'>
+        <MobileHeader
+          isAuthorVersion={isAuthorVersion}
+          host={host}
+          mobileNavObj={data?.mobileNavMenu}
+          debugAnim={false}
+          maxWidth={840}
+        />
         {data?.panels?.map &&
           data.panels.map((panel, index) => {
             const staticPanel = (
@@ -34,11 +35,17 @@ export default function HeadlessPage({
                 hash={null}
                 ignoreHash={true}
               />
-            )
+            );
+
+
             return (
-              <PanelAnimationWrapper key={index} animations={panel.animations}>
+              <>
+              {animation && <PanelAnimationWrapper key={index} animations={panel.animations}>
                 {staticPanel}
-              </PanelAnimationWrapper>
+              </PanelAnimationWrapper>}
+
+              {!animation && staticPanel}
+            </>
             );
           })}
       </div>

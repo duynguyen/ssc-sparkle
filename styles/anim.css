@@ -1,0 +1,4 @@
+/*attempting https://greensock.com/fouc/*/
+#rocks1, #rocks2, #rocks3,  #biker, #intro .textLayer .left {
+    visibility: hidden;
+}

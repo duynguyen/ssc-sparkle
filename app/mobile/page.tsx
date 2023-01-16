@@ -3,9 +3,7 @@
 import HeadlessPage from '#/components/HeadlessPage';
 import '#/styles/globals.scss';
 import { downloadData } from '#/components/utils';
-import { headers } from 'next/headers';
 
-import { deviceDetect } from 'react-device-detect';
 import React from 'react';
 import { cache } from 'react';
 
@@ -62,7 +60,7 @@ async function fetchData() {
   };
 
   let props = {
-    // desktopData: await downloadData(hostConfig, 'desktop'),
+    // desktopData: await downloadData(hostConfig, 'noanimation'),
     mobileData: await downloadData(hostConfig, 'mobile'),
     isAuthorVersion: false,
     customHost: 'https://publish-p81252-e700817.adobeaemcloud.com/',
