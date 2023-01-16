@@ -1,8 +1,6 @@
 'use server';
 
 import Image from 'next/image';
-import { useContext } from 'react';
-import { WindowSizeProvider } from './ResizeProvider';
 
 function aboveFold({ data, panelNr, host }) {
   const {
@@ -53,9 +51,6 @@ export default function LayerImage(props) {
   } = data;
 
   const source = host + image?._path;
-
-  const windowSize = useContext(WindowSizeProvider);
-  // const mobileMode = windowSize.width <= 840;
 
   return (
     <div

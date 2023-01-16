@@ -7,6 +7,7 @@ import { downloadData } from '#/components/utils';
 import React from 'react';
 import { cache } from 'react';
 import TimelineAnimationWrapper from '#/components/TimelineWrapper';
+import '../styles/anim.css'
 
 export const revalidate = 3600; // revalidate every minute? sec?
 
@@ -47,7 +48,7 @@ async function fetchData() {
   };
 
   let props = {
-    desktopData: await downloadData(hostConfig, 'desktop'),
+    desktopData: await downloadData(hostConfig, 'noanimation'),
     // mobileData: await downloadData(hostConfig, 'mobile'),
     isAuthorVersion: false,
     customHost: 'https://publish-p81252-e700817.adobeaemcloud.com/',

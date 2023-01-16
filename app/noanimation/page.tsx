@@ -3,12 +3,9 @@
 import HeadlessPage from '#/components/HeadlessPage';
 import '#/styles/globals.scss';
 import { downloadData } from '#/components/utils';
-import { headers } from 'next/headers';
 
-import { deviceDetect } from 'react-device-detect';
 import React from 'react';
 import { cache } from 'react';
-import TimelineAnimationWrapper from '#/components/TimelineWrapper';
 
 export const revalidate = 3600; // revalidate every minute? sec?
 
@@ -23,13 +20,12 @@ export default async function Page() {
   );
 
   return (
-    <TimelineAnimationWrapper>
       <HeadlessPage
         data={data}
         isAuthorVersion={props.isAuthorVersion}
         host={props.customHost}
+        animation={false}
       />
-    </TimelineAnimationWrapper>
 
   );
 }
@@ -49,7 +45,7 @@ async function fetchData() {
   };
 
   let props = {
-    desktopData: await downloadData(hostConfig, 'desktop'),
+    desktopData: await downloadData(hostConfig, 'noanimation'),
     // mobileData: await downloadData(hostConfig, 'mobile'),
     isAuthorVersion: false,
     customHost: 'https://publish-p81252-e700817.adobeaemcloud.com/',

@@ -188,14 +188,11 @@ button {
   }
 }
 
-/*attempting https://greensock.com/fouc/*/
-#rocks1, #rocks2, #rocks3,  #biker, #intro .textLayer .left {
-  visibility: hidden;
-}
 
 
 
-// div.page.desktop {
+
+// div.page.noanimation {
 //   .mobileHeaderWrapper {
 //     transition: opacity 2s linear;
 //     opacity: 0;
