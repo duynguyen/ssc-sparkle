@@ -8,29 +8,42 @@ import { headers } from 'next/headers';
 import { deviceDetect } from 'react-device-detect';
 import React from 'react';
 import { cache } from 'react';
-import TimelineAnimationWrapper from '#/components/TimelineWrapper';
 
 export const revalidate = 3600; // revalidate every minute? sec?
 
 export default async function Page() {
+  // const headersList = headers();
+  // const referer = headersList.get('referer');
+  // const userAgent = headersList.get('user-agent');
+  // const device = deviceDetect(userAgent as undefined | string);
+  // const isMobile = device.isMobile;
+  const isMobile = true;
+
+  console.log('isMobile', isMobile);
 
   const props = await fetchDataCached();
 
-  const data = props.desktopData;
+  const data = props.mobileData;
 
-  console.log("Rendering page at",
+  console.log("Rendering mobile",
     new Date(),
   );
 
-  return (
-    <TimelineAnimationWrapper>
-      <HeadlessPage
-        data={data}
-        isAuthorVersion={props.isAuthorVersion}
-        host={props.customHost}
-      />
-    </TimelineAnimationWrapper>
+  // console.log(
+  //   'Sparkle root page rendered in mode mobile=' +
+  //     isMobile +
+  //     ' for browser=' +
+  //     device.ua +
+  //     ' at ',
+  //   new Date(),
+  // );
 
+  return (
+    <HeadlessPage
+      data={data}
+      isAuthorVersion={props.isAuthorVersion}
+      host={props.customHost}
+    />
   );
 }
 
@@ -40,7 +53,7 @@ const fetchDataCached = cache(async () => {
 });
 
 async function fetchData() {
-  console.log('fetchData()');
+  console.log('getServerSideProps');
 
   const hostConfig = {
     authorHost: 'https://author-p81252-e700817.adobeaemcloud.com',
@@ -49,8 +62,8 @@ async function fetchData() {
   };
 
   let props = {
-    desktopData: await downloadData(hostConfig, 'desktop'),
-    // mobileData: await downloadData(hostConfig, 'mobile'),
+    // desktopData: await downloadData(hostConfig, 'desktop'),
+    mobileData: await downloadData(hostConfig, 'mobile'),
     isAuthorVersion: false,
     customHost: 'https://publish-p81252-e700817.adobeaemcloud.com/',
     fetchError: null,

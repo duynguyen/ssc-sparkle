@@ -1,32 +1,19 @@
 'use server';
 
-// import Head from "next/head";
 import MobileHeader from './MobileHeader';
 import Panel from './Panel';
-import Head from 'next/head';
+import PanelAnimationWrapper from '#/components/PanelAnimationWrapper';
 
 export default function HeadlessPage({
-  viewType, // 'mobile' or 'desktop'
   data,
   isAuthorVersion,
   host,
 }) {
-  console.log('HeadlessPage for ' + viewType + ' rendered at ', new Date());
 
   return (
     data && (
       <div
-        className={'page' + (viewType === 'mobile' ? ' mobile' : ' desktop')}
-        // style={
-        //   viewType === 'mobile' ? { maxWidth: 840, margin: '0 auto' } : null
-        // }
-      >
-        {/*<Head>*/}
-        {/*  <title>{data?.title || "Sparkle SSR Demo"}</title>*/}
-        {/*  <meta name="description" content={data?.description?.plaintext} />*/}
-        {/*  <meta name="renderedAt" content={new Date().toLocaleString()} />*/}
-        {/*</Head>*/}
-        {viewType === 'mobile' && (
+        className="page desktop">
           <MobileHeader
             isAuthorVersion={isAuthorVersion}
             host={host}
@@ -34,18 +21,12 @@ export default function HeadlessPage({
             debugAnim={false}
             maxWidth={840}
           />
-        )}
         {data?.panels?.map &&
           data.panels.map((panel, index) => {
-            // if (viewType === 'desktop' && index > 0 && !loadRest) {
-            //   document.body.style.overflowY = 'scroll';
-            //   return null;
-            // }
-            return (
+            const staticPanel = (
               <Panel
                 panel={panel}
                 panelNr={index}
-                settings={{ viewType }}
                 key={index}
                 runOnEnd={null}
                 isAuthorVersion={isAuthorVersion}
@@ -53,6 +34,11 @@ export default function HeadlessPage({
                 hash={null}
                 ignoreHash={true}
               />
+            )
+            return (
+              <PanelAnimationWrapper key={index} animations={panel.animations}>
+                {staticPanel}
+              </PanelAnimationWrapper>
             );
           })}
       </div>

@@ -16,6 +16,8 @@
 @import './textLayers.scss';
 @import './imageLayers.scss';
 
+
+
 * {
   font-family: Source Sands Pro;
 }
@@ -169,6 +171,11 @@ button {
   .mobileHeaderWrapper {
     display: block;
   }
+
+
+  div#intro header.header {
+    display: none;
+  }
 }
 
 @media (min-width: 841px) {
@@ -176,6 +183,13 @@ button {
     display: none;
   }
 }
+
+/*attempting https://greensock.com/fouc/*/
+#rocks1, #rocks2, #rocks3,  #biker, #intro .textLayer .left {
+  visibility: hidden;
+}
+
+
 
 // div.page.desktop {
 //   .mobileHeaderWrapper {

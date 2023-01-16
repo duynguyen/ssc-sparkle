@@ -86,6 +86,12 @@ const createAnimationTimeline = (
         animation.to.duration = 0;
       }
 
+      //stop the initial flicker
+      if(animation.selector !== "#rocks8") {
+        animation.from.autoAlpha = 0;
+        animation.to.autoAlpha = 1;
+      }
+
       // apply animation based on what is present
       if (animation.from && animation.to) {
         tl.fromTo(q(animation.selector), animation.from, animation.to, delay);
