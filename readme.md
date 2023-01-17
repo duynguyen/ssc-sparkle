@@ -9,9 +9,9 @@ This is a React 18 [SSC](https://nextjs.org/docs/advanced-features/react-18/serv
 
 The only client side components are [MobileHeader.jsx](./components/MobileHeader.jsx) and next/Image.
 
-[PageSpeed Insights on Vercel = 100](https://pagespeed.web.dev/report?url=https%3A%2F%2Fssc-sparkle.vercel.app%2Fnoanimation)
+[PageSpeed Insights on Vercel = 99](https://pagespeed.web.dev/report?url=https%3A%2F%2Fssc-sparkle.vercel.app%2Fnoanimation)
 
-[PageSpeed Insights on Azure = 100](https://pagespeed.web.dev/report?url=https%3A%2F%2Fgreen-tree-0385ee80f.2.azurestaticapps.net%2Fnoanimation)
+[PageSpeed Insights on Azure = 95](https://pagespeed.web.dev/report?url=https%3A%2F%2Fgreen-tree-0385ee80f.2.azurestaticapps.net%2Fnoanimation)
 
 # Desktop fragment, GSAP enabled (animation), instant animation
 
@@ -22,7 +22,7 @@ This variant shows the impact of loading GSAP on the initial page load and its i
 
 [PageSpeed Insights on Vercel ~= 86](https://pagespeed.web.dev/report?url=https%3A%2F%2Fssc-sparkle.vercel.app%2F%3FdebugAnim%3Dinstant)
 
-[PageSpeed Insights on Azure ~= 86](https://pagespeed.web.dev/report?url=https%3A%2F%2Fgreen-tree-0385ee80f.2.azurestaticapps.net%2F%3FdebugAnim%3Dinstant)
+[PageSpeed Insights on Azure ~= 70](https://pagespeed.web.dev/report?url=https%3A%2F%2Fgreen-tree-0385ee80f.2.azurestaticapps.net%2F%3FdebugAnim%3Dinstant)
 
 # Desktop fragment, GSAP enabled (animation)
 
@@ -35,4 +35,4 @@ Total Blocking Time on non-potato devices.
 
 [PageSpeed Insights on Vercel ~= 88](https://pagespeed.web.dev/report?url=https%3A%2F%2Fssc-sparkle.vercel.app%2F)
 
-[PageSpeed Insights on Azure ~= 88](https://pagespeed.web.dev/report?url=https%3A%2F%2Fgreen-tree-0385ee80f.2.azurestaticapps.net%2F)
+[PageSpeed Insights on Azure ~= 89](https://pagespeed.web.dev/report?url=https%3A%2F%2Fgreen-tree-0385ee80f.2.azurestaticapps.net%2F)
