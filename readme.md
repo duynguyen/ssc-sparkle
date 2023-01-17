@@ -18,7 +18,7 @@ The only client side components are [MobileHeader.jsx](./components/MobileHeader
 [Vercel](https://ssc-sparkle.vercel.app/?debugAnim=instant) | 
 [Azure](https://green-tree-0385ee80f.2.azurestaticapps.net/?debugAnim=instant)
 
-This variant shows the impact of loading GSAP on the initial page load and its instant run to generate the final rendering as the page. GSPA is loaded and innitiliased by using a Client Side React Component [PanelAnimationWrapper.jsx](./components/PanelAnimationWrapper.jsx).
+This variant shows the impact of loading GSAP on the initial page load and its instant run to generate the final rendering as the page. GSPA is loaded and innitiliased by using a Client Side React Component [PanelAnimationWrapper.jsx](./components/PanelAnimationWrapper.jsx). One component instance is created for each Panel that has animations -- in total 7 instances.
 
 [PageSpeed Insights on Vercel ~= 86](https://pagespeed.web.dev/report?url=https%3A%2F%2Fssc-sparkle.vercel.app%2F%3FdebugAnim%3Dinstant)
 
