@@ -10,14 +10,14 @@ gsap.registerPlugin(ScrollTrigger);
 
 export const TimelineProvider = createContext(null);
 
-export const TimelineAnimationWrapper = ({ children }) => {
+export const TimelineAnimationWrapper = ({ children, debugAnim = false }) => {
 
-  let debugAnim = null;
-  if(typeof window !== 'undefined') {
-    const urlParams = new URLSearchParams(window?.location?.search);
-    const debugAnimQuery = urlParams?.get('debugAnim');
-    debugAnim = debugAnimQuery === 'instant';
-  }
+  // let debugAnim = null;
+  // if(typeof window !== 'undefined') {
+  //   const urlParams = new URLSearchParams(window?.location?.search);
+  //   const debugAnimQuery = urlParams?.get('debugAnim');
+  //   debugAnim = debugAnimQuery === 'instant';
+  // }
 
   const ref = useRef();
   const q = gsap.utils.selector(ref);
