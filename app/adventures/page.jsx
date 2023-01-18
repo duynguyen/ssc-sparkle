@@ -10,7 +10,7 @@ export default async function Page() {
   const client = AdventureClient.fromEnv();
   const res = await client.getAllAdventures();
   const adventures = res?.data?.adventureList?.items;
-  
+
   return (<section className="">
     <div className="bg-white">
       <div className="max-w-2xl px-4 py-10 mx-auto sm:py-16 sm:px-6 lg:max-w-7xl lg:px-8">
