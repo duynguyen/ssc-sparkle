@@ -36,3 +36,14 @@ Total Blocking Time on non-potato devices.
 [PageSpeed Insights on Vercel ~= 88](https://pagespeed.web.dev/report?url=https%3A%2F%2Fssc-sparkle.vercel.app%2F)
 
 [PageSpeed Insights on Azure ~= 89](https://pagespeed.web.dev/report?url=https%3A%2F%2Fgreen-tree-0385ee80f.2.azurestaticapps.net%2F)
+
+
+# Compiling and running
+
+Use the following env vars:
+    
+```bash
+NEXT_PUBLIC_AEM_HOST=https://publish-p64257-e147834-cmstg.adobeaemcloud.com
+NEXT_GRAPHQL_ENDPOINT=/content/_cq_graphql/aem-demo-assets/endpoint.json
+NEXT_PUBLIC_URL=https://green-tree-0385ee80f.2.azurestaticapps.net
+```
