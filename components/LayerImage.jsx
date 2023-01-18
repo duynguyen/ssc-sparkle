@@ -75,24 +75,9 @@ export default function LayerImage(props) {
           height={image.height}
           priority={aboveFold(props)}
           loading={aboveFold(props) ? 'eager' : 'lazy'}
-          sizes="50vw"
-          //fetchpriority={layerId === 'biker-layer' ? 'high' : ''}
-          //priority={false}
-          //   priority={
-          //     (panelNr === 0 && !source.includes('_m.') && !source.includes('sky0.'))
-          //   || layerId === 'biker-layer' ||   layerId === 'layer-rocks1' ||   layerId === 'layer-rocks2'
-          // }
+          // sizes="50vw"
           quality="90"
-          // loading={layerId === 'biker-layer' ? 'eager' : 'lazy'}
-          // sizes={
-          //   layerId === 'biker-layer' ? "(max-width: 840px) 50vw, 40vw" :
-          //   layerId === 'layer-rocks1' ? "(max-width: 840px) 50vw, 70vw" :
-          //   layerId === 'layer-rocks2' ? "(max-width: 840px) 50vw, 90vw" :
-          //   layerId === 'rocks3' ? "(max-width: 840px) 50vw, 75vw" :
-          //   layerId === 'female-hiker-layer' ? "(max-width: 840px) 100vw, 30vw" :
-          //   "100vw"
-          // }
-          // loading={panelNr === 0 || forceLoad ? "eager" : "lazy"}
+          sizes="(max-width: 840px) 80vw, 20vw"
         />
       </div>
     </div>
