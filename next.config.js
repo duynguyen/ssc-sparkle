@@ -15,6 +15,12 @@ const nextConfig = {
         // port: '',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'publish-p64257-e147834-cmstg.adobeaemcloud.com',
+        // port: '',
+        pathname: '/**',
+      },
     ],
   },
 };
