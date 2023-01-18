@@ -34,7 +34,7 @@ export default function Header({ isAuthorVersion, host }) {
         </div>
 
         <div className="middle">
-          <a href="">
+          <a href="/adventures">
             <h4>adventures</h4>
           </a>
           <a href="">
