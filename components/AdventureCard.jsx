@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 Adobe. All rights reserved.
+ * Copyright 2023 Adobe. All rights reserved.
  * This file is licensed to you under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License. You may obtain a copy
  * of the License at http://www.apache.org/licenses/LICENSE-2.0
@@ -12,14 +12,21 @@
  */
 
 import Link from 'next/link'
+import Image from 'next/image';
 
 export default function AdventureCard({ slug, title, price, duration, imageSrc }) {
+  const aboveFold = ['Bali Surf Camp'].includes(title);
   return (
     <div key={slug} className="group relative">
       <div className="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-80 lg:aspect-none">
-        <img
+        <Image
           src={imageSrc}
           alt={title}
+          width={542}
+          height={605}
+          priority={aboveFold}
+          loading={aboveFold ? 'eager' : 'lazy'}
+          sizes="50vw"
           className="w-full h-full object-center object-cover lg:w-full lg:h-full"
         />
       </div>
