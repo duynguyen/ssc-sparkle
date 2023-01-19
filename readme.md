@@ -40,6 +40,16 @@ Total Blocking Time on non-potato devices.
 
 [PageSpeed Insights on Azure ~= 89](https://pagespeed.web.dev/report?url=https%3A%2F%2Fgreen-tree-0385ee80f.2.azurestaticapps.net%2F)
 
+# WKND adventures (desktop + mobile), SSR with cache
+
+[Vercel](https://ssc-sparkle.vercel.app/adventures) | 
+[Azure](https://green-tree-0385ee80f.2.azurestaticapps.net/adventures)
+
+
+[PageSpeed Insights on Vercel ~= 100](https://pagespeed.web.dev/report?url=https%3A%2F%2Fssc-sparkle.vercel.app%2Fadventures)
+
+[PageSpeed Insights on Azure ~= 100](https://pagespeed.web.dev/report?url=https%3A%2F%2Fgreen-tree-0385ee80f.2.azurestaticapps.net%2Fadventures)
+
 
 # Compiling and running
 
