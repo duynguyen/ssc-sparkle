@@ -9,7 +9,7 @@ export const revalidate = 60; // revalidate this page every 60 seconds
 const NEXT_PUBLIC_AEM_HOST = process.env.NEXT_PUBLIC_AEM_HOST;
 const NEXT_PUBLIC_AEM_ROOT = process.env.NEXT_PUBLIC_AEM_ROOT;
 
-export const getAdventures = cache(async () => {
+const getAdventures = cache(async () => {
   const client = AdventureClient.fromEnv();
   const res = await client.getAllAdventures();
   const adventures = res?.data?.adventureList?.items;

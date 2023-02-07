@@ -8,10 +8,9 @@ export const revalidate = 60; // revalidate this page every 60 seconds
 const NEXT_PUBLIC_AEM_HOST = process.env.NEXT_PUBLIC_AEM_HOST;
 const NEXT_PUBLIC_AEM_ROOT = process.env.NEXT_PUBLIC_AEM_ROOT;
 
-export const getAdventureByPath = cache(async (path) => {
+const getAdventureByPath = cache(async (path) => {
   const client = AdventureClient.fromEnv();
   const res = await client.getAdventureByPath(path);
-  console.log(res)
   const adventure = res?.data?.adventureByPath?.item;
   return adventure;
 });
@@ -19,6 +18,8 @@ export const getAdventureByPath = cache(async (path) => {
 export default async function Page({ params }) {
   const cfPath = `/content/dam/aem-demo-assets/en/adventures/${params.path.join('/')}`;
   const adventure = await getAdventureByPath(cfPath);
+  if(!adventure) return(<>Adventure not found</>);
+
   const {
     title,
     activity,
@@ -31,7 +32,6 @@ export default async function Page({ params }) {
     description,
     itinerary,
   } = adventure;
-  if(!adventure) return(<>Adventure not found</>);
   return (<article>
     <div className="bg-white">
       <div className="pt-6">
