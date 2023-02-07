@@ -28,11 +28,14 @@ export default async function Page() {
         </h2>
         <div className="grid grid-cols-1 mt-6 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
           {adventures.map(
-            ({ slug, title, price, tripLength, primaryImage }) => {
+            ({ _path, title, price, tripLength, primaryImage }) => {
+              const pathItems = _path.split('/');
+              const cfPath = pathItems.slice(Math.max(pathItems.length - 2, 0)).join('/');
+              const href = `/adventures/${cfPath}`;
               return (
                 <AdventureCard
-                  key={slug}
-                  slug={slug}
+                  key={_path}
+                  href={href}
                   title={title}
                   price={price}
                   duration={tripLength}
