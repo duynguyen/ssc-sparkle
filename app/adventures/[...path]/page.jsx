@@ -1,5 +1,6 @@
 import '#/styles/globals.css';
 
+import Image from 'next/image';
 import { AdventureClient } from '#/lib/adventures';
 import { cache } from 'react';
 
@@ -37,9 +38,13 @@ export default async function Page({ params }) {
       <div className="pt-6">
         
         <div className="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 overflow-hidden lg:h-80 lg:aspect-none">
-          <img
-            alt={title}
+          <Image
             src={`${NEXT_PUBLIC_AEM_HOST}${primaryImage._path}`}
+            alt={title}
+            width={1680}
+            height={320}
+            loading='eager'
+            sizes="50vw"
             className="w-full h-full object-center object-cover lg:w-full lg:h-full"
           />
         </div>
