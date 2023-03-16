@@ -45,6 +45,7 @@ export default async function Page({ params }) {
             height={320}
             loading='eager'
             sizes="50vw"
+            unoptimized={NEXT_PUBLIC_AEM_HOST.includes('author')}
             className="w-full h-full object-center object-cover lg:w-full lg:h-full"
           />
         </div>

@@ -29,6 +29,7 @@ export default function AdventureCard({ _path, href, title, price, duration, ima
           priority={aboveFold}
           loading={aboveFold ? 'eager' : 'lazy'}
           sizes="50vw"
+          unoptimized={imageSrc.includes('author')}
           className="w-full h-full object-center object-cover lg:w-full lg:h-full"
         />
       </div>
