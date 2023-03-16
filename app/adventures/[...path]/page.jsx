@@ -4,10 +4,11 @@ import Image from 'next/image';
 import { AdventureClient } from '#/lib/adventures';
 import { cache } from 'react';
 
-export const revalidate = 60; // revalidate this page every 60 seconds
-
 const NEXT_PUBLIC_AEM_HOST = process.env.NEXT_PUBLIC_AEM_HOST;
-const NEXT_PUBLIC_AEM_ROOT = process.env.NEXT_PUBLIC_AEM_ROOT;
+
+// if backend is an author, revalidate immediately
+// otherwise, revalidate every 60 seconds
+export const revalidate = (NEXT_PUBLIC_AEM_HOST.includes('author') ? 0 : 60);
 
 const getAdventureByPath = cache(async (path) => {
   const client = AdventureClient.fromEnv();

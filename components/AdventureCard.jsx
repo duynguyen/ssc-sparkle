@@ -16,10 +16,10 @@
 import Link from 'next/link'
 import Image from 'next/image';
 
-export default function AdventureCard({ _path, href, title, price, duration, imageSrc }) {
+export default function AdventureCard({ _path, href, title, price, tripLength, imageSrc, itemId }) {
   const aboveFold = ['Bali Surf Camp'].includes(title);
   return (
-    <div key={_path} className="group relative">
+    <div key={_path} className="group relative" itemScope itemtype='reference' itemFilter='cf' itemID={itemId}>
       <div className="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-80 lg:aspect-none">
         <Image
           src={imageSrc}
@@ -31,16 +31,18 @@ export default function AdventureCard({ _path, href, title, price, duration, ima
           sizes="50vw"
           unoptimized={imageSrc.includes('author')}
           className="w-full h-full object-center object-cover lg:w-full lg:h-full"
+          itemProp='primaryImage'
+          itemType='image'
         />
       </div>
       <div className="mt-4 flex justify-between">
-        <p className="mt-1 text-sm text-gray-500">{duration}</p>
-        <p className="text-sm font-medium text-gray-900">{price}</p>
+        <p className="mt-1 text-sm text-gray-500" itemProp='tripLength' itemType='text'>{tripLength}</p>
+        <p className="text-sm font-medium text-gray-900" itemProp='price' itemType='text'>{price}</p>
       </div>
       <h3 className="font-semibold text-gray-700">
         <Link href={href}>
           <div>
-            <span aria-hidden="true" className="absolute inset-0" />
+            <span aria-hidden="true" className="absolute inset-0" itemProp='title' itemType='text' />
             {title}
           </div>
         </Link>

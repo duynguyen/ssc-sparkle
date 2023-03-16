@@ -6,7 +6,6 @@ import AdventureCard from '#/components/AdventureCard';
 import { cache } from 'react';
 
 const NEXT_PUBLIC_AEM_HOST = process.env.NEXT_PUBLIC_AEM_HOST;
-const NEXT_PUBLIC_AEM_ROOT = process.env.NEXT_PUBLIC_AEM_ROOT;
 
 // if backend is an author, revalidate immediately
 // otherwise, revalidate every 60 seconds
@@ -25,7 +24,6 @@ export default async function Page() {
   const pageClient = PageClient.fromEnv();
   const itemPath = pageClient.getPath('/content/expdevdemoaddon/us/en', '/root/container/title');
   const title = await pageClient.getItem(itemPath);
-  console.log(`title = ${JSON.stringify(title)}`)
 
   return (<section className="">
     <script src="universal-editor-embedded.js" async></script>
@@ -40,14 +38,16 @@ export default async function Page() {
               const pathItems = _path.split('/');
               const cfPath = pathItems.slice(Math.max(pathItems.length - 2, 0)).join('/');
               const href = `/adventures/${cfPath}`;
+              const itemId = `urn:aemconnection:${_path}/jcr:content/data/master`;
               return (
                 <AdventureCard
                   key={_path}
                   href={href}
                   title={title}
                   price={price}
-                  duration={tripLength}
+                  tripLength={tripLength}
                   imageSrc={`${NEXT_PUBLIC_AEM_HOST}${primaryImage._path}`}
+                  itemId={itemId}
                 />
               );
             }
