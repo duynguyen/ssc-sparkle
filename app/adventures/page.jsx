@@ -1,6 +1,7 @@
 import '#/styles/globals.css';
 
 import { AdventureClient } from '#/lib/adventures';
+import { PageClient } from '#/lib/pages';
 import AdventureCard from '#/components/AdventureCard';
 import { cache } from 'react';
 
@@ -19,12 +20,16 @@ const getAdventures = cache(async () => {
 export default async function Page() {
 
   const adventures = await getAdventures();
+  const pageClient = PageClient.fromEnv();
+  const itemPath = pageClient.getPath('/content/expdevdemoaddon/us/en', '/root/container/title');
+  const title = await pageClient.getItem(itemPath);
+  console.log(`title = ${JSON.stringify(title)}`)
 
   return (<section className="">
     <div className="bg-white">
       <div className="max-w-2xl px-4 py-10 mx-auto sm:py-16 sm:px-6 lg:max-w-7xl lg:px-8">
         <h2 className="text-2xl font-extrabold tracking-tight text-gray-900">
-          Your next adventures can be one of these...
+          <div itemID={`urn:aemconnection:${itemPath}`} itemProp="jcr:title" itemType="text">{title.text}</div>
         </h2>
         <div className="grid grid-cols-1 mt-6 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
           {adventures.map(
