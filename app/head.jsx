@@ -21,7 +21,6 @@ export default function Head() {
 
 
 
-
       {/*<link*/}
       {/*  rel="preload"*/}
       {/*  fetchpriority="high"*/}

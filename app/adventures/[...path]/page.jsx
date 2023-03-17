@@ -38,7 +38,7 @@ export default async function Page({ params }) {
     <div className="bg-white">
       <div className="pt-6">
         
-        <div className="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 overflow-hidden lg:h-80 lg:aspect-none">
+        <div className='w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 overflow-hidden lg:h-80 lg:aspect-none'>
           <Image
             src={`${NEXT_PUBLIC_AEM_HOST}${primaryImage._path}`}
             alt={title}

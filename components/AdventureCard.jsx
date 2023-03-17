@@ -42,7 +42,7 @@ export default function AdventureCard({ _path, href, title, price, tripLength, i
       <h3 className="font-semibold text-gray-700">
         <Link href={href}>
           <div itemProp='title' itemType='text'>
-            <span aria-hidden="true" className="absolute inset-0" />
+            <span aria-hidden='true' className="absolute inset-0" />
             {title}
           </div>
         </Link>
